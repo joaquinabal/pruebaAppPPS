@@ -13,7 +13,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^20.0.0",
+    "@angular/animations": "^20.2.1",
     "@angular/common": "^20.0.0",
     "@angular/compiler": "^20.0.0",
     "@angular/core": "^20.0.0",
@@ -27,8 +27,11 @@
     "@capacitor/keyboard": "7.0.2",
     "@capacitor/status-bar": "7.0.2",
     "@ionic/angular": "^8.0.0",
+    "@supabase/supabase-js": "^2.56.0",
     "ionicons": "^7.0.0",
+    "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
+    "supabase": "^2.34.3",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },

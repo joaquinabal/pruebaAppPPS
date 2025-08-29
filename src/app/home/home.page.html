@@ -1,20 +1,66 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>  
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <form [formGroup]="form">
+
+      <div class="ion-text-center ion-margin-vertical lock">
+        <ion-icon name="lock-closed"></ion-icon>
+      </div>
+
+      <ion-item 
+      lines="none"
+      class="ion-margin-horizontal ion-margin-top">
+           <ion-button slot="start" fill="clear" color="medium">
+      <ion-icon slot="icon-only" name="mail-outline"></ion-icon>
+     </ion-button>
+     <ion-input
+     labelPlacement="floating"
+     type="email"
+     formControlName="email"
+     placeholder="Ingrese su correo electrónico"
+     errorText="Ingrese correctamente su correo electrónico"
+     >
+
+    <div slot="label">Correo Electrónico<ion-text color="danger">*</ion-text> </div>
+    </ion-input> 
+      </ion-item>
+    
+      <ion-item 
+      lines="none"
+      class="ion-margin">
+            <ion-button slot="start" fill="clear" color="dark">
+      <ion-icon slot="icon-only" name="key-outline"></ion-icon>
+     </ion-button>
+         
+     <ion-input
+     labelPlacement="floating"
+     [type]="isPwd ? 'text' : 'password'"
+     formControlName="password"
+     placeholder="Ingrese su contraseña"
+     [errorText]= "form.get('password')!.hasError('minLength') ? '* La contraseña debe ser min. 8 caracteres de largo' : '* Ingrese correctamente su contraseña' "
+     >
+
+    <div slot="label">Contraseña<ion-text color="danger">*</ion-text> </div>
+    </ion-input> 
+      <ion-button slot="end" fill="clear" color="danger" (click)="togglePwd()">
+      <ion-icon slot="icon-only" [name]="isPwd ? 'eye-off-outline' : 'eye-outline' "></ion-icon>
+     </ion-button>
+      </ion-item>
+      
+      <div class="ion-text-right ion-margin-horizontal">
+        <ion-text class="fwd" color="dark">¿Olvidaste tu contraseña?</ion-text>
+      </div>
+
+      <div class="ion-margin submit">
+        <ion-button class="submit" expand="block" size="large"(click)="onSubmit()">
+          <ion-text><strong>Ingresar</strong></ion-text>
+        </ion-button>
+      </div>
+
+
+    </form>
+
+  </ion-card>
+
 </ion-content>
