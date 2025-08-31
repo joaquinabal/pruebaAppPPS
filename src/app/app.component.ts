@@ -1,12 +1,28 @@
 import { Component } from '@angular/core';
-import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { eyeOffOutline, eyeOutline, keyOutline, lockClosed, mailOutline } from 'ionicons/icons';
+import { eyeOffOutline, eyeOutline, keyOutline, lockClosed, mailOutline } from 'ionicons/icons';import {
+  IonApp,
+  IonRouterOutlet,
+  IonHeader,
+  IonToolbar,
+  IonButtons,
+  IonMenuButton,
+  IonTitle,
+} from '@ionic/angular/standalone';
+import { SideMenuComponent } from './components/sidemenu/sidemenu.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  imports: [IonApp, IonRouterOutlet],
+  imports: [ IonRouterOutlet,
+    SideMenuComponent,
+    IonApp,
+    IonRouterOutlet,
+    IonHeader,
+    IonToolbar,
+    IonButtons,
+    IonMenuButton,
+    IonTitle,],
 })
 export class AppComponent {
   constructor() {

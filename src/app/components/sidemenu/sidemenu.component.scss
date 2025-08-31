@@ -1,0 +1,39 @@
+ion-menu {
+  --width: 260px; // ancho del menú lateral
+  --background: transparent; // para que no tape el fondo con color sólido
+
+  ion-header {
+    ion-toolbar {
+      --background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      border-radius: 0 0 20px 0;
+      box-shadow: none;
+
+      ion-title {
+        color: #000;
+        font-weight: bold;
+      }
+    }
+  }
+
+  ion-content {
+    --background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+
+    ion-list {
+      background: transparent;
+
+      ion-item {
+        --background: rgba(0, 0, 0, 0.6);
+        --border-radius: 12px;
+        margin: 8px 12px;
+        color: #fff;
+
+        ion-label {
+          font-weight: 500;
+          font-size: 0.95rem;
+        }
+      }
+    }
+  }
+}

@@ -35,4 +35,27 @@ export class SupabaseService {
     return await supabase.auth.signInWithPassword({ email, password });
   }
 
+   async signUpUser(email: string, password: string) {
+    return supabase.auth.signUp({
+      email,
+      password
+    });
+  }
+
+  async escucharCambio(user: any, isLoggedIn: boolean){
+    // Escuchar cambios de sesión
+    supabase.auth.onAuthStateChange((_event, session) => {
+      user = session?.user ?? null;
+      isLoggedIn = !!user;
+    });
+
+    const { data } = await supabase.auth.getSession();
+    user = data.session?.user ?? null;
+    isLoggedIn = !! user;
+  }
+
+   async logout() {
+    await supabase.auth.signOut();
+  }
+
 }

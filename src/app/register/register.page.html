@@ -60,10 +60,11 @@
      <ion-input
      labelPlacement="floating"
      [type]="isPwd ? 'text' : 'password'"
-     formControlName="secondPassword"
-     placeholder="Ingrese su contraseña"
-     [errorText]= "form.get('password')!.hasError('minLength') ? '* La contraseña debe ser min. 8 caracteres de largo' : '* Ingrese correctamente su contraseña' "
+     formControlName="confirmPassword"
+     placeholder="Repita su contraseña"
+     [errorText]="confirmPassword?.hasError('passwordMismatch')  ? '* Las contraseñas no coinciden.' : ''"
      >
+
 
     <div slot="label">Repetir Contraseña<ion-text color="danger">*</ion-text> </div>
     </ion-input> 
