@@ -4,6 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { SupabaseService } from '../services/supabase.service';
 import { LoadingService } from '../services/loading.service';
 import { ToastrService } from 'ngx-toastr'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,8 @@ export class HomePage {
   constructor(
      private supabaseService: SupabaseService,
     private toastr: ToastrService, // Inyecta el servicio de Toastr
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private router: Router
   ) {
     this.initForm();
   }
@@ -64,8 +66,8 @@ export class HomePage {
       this.toastr.error(errorMessage, 'Error de Autenticación');
       return;
     } else {
-      console.log("siii")
       this.toastr.success("Has accedido!")
+      this.router.navigate(['/home']);
     }
   } catch (error: any) {
     this.toastr.error(error.message || 'Ocurrió un error inesperado al iniciar sesión.', 'Error General');

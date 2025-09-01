@@ -1,60 +1,51 @@
 import { Component, OnInit } from '@angular/core';
-import { createClient, User } from '@supabase/supabase-js';
 import { SupabaseService } from 'src/app/services/supabase.service';
+import { Router } from '@angular/router';
 import {
-  IonMenu,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
+  IonButtons,
   IonContent,
-  IonList,
-  IonItem,
+  IonHeader,
+  IonMenu,
+  IonMenuButton,
+  IonTitle,
+  IonToolbar,
   IonLabel,
-} from '@ionic/angular/standalone'; 
+  IonIcon,
+  IonMenuToggle,
+  IonItem,
+  IonList
+} from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
-
-
-const supabase = createClient(
-  'https://TU_PROYECTO.supabase.co',
-  'TU_PUBLIC_ANON_KEY'
-);
 
 @Component({
   selector: 'app-side-menu',
   standalone: true,
   templateUrl: './sidemenu.component.html',
   styleUrls: ['./sidemenu.component.scss'],
-imports: [
-    IonMenu,
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    IonList,
-    IonItem,
-    IonLabel,
-    CommonModule
-  ]
-
+ imports: [CommonModule,IonList, IonItem, IonMenuToggle, IonIcon, IonLabel, IonButtons, IonContent, IonHeader, IonMenu, IonMenuButton, IonTitle, IonToolbar],
 })
 export class SideMenuComponent implements OnInit {
-  isLoggedIn = false;
-  user: User | null = null;
+  user: any = null;
 
-  constructor(
-    private supabaseService: SupabaseService
-  ){
-    
+  constructor(private supabaseService: SupabaseService, private router: Router) {}
+
+  ngOnInit() {
+    // Suscribirse a los cambios de usuario
+    this.supabaseService.user$.subscribe(user => {
+      this.user = user;
+    });
   }
 
-  async ngOnInit() {
-    // Escuchar cambios de sesión
-    this.supabaseService.escucharCambio(this.user, this.isLoggedIn)
+  async logout() {
+    await this.supabaseService.logout();
+    this.router.navigate(['/login']);
   }
 
-  async logout(){
-    this,this.supabaseService.logout()
-    this.isLoggedIn = false;
-    this.user = null;
+  goToLogin() {
+    this.router.navigate(['/login']);
+  }
+
+  goToRegister() {
+    this.router.navigate(['/register']);
   }
 }

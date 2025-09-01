@@ -1,0 +1,20 @@
+.menu-circular {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.menu-circular ion-icon {
+  font-size: 24px;
+  color: #222;
+}
+.menu-circular:active {
+  background: #f0f0f0;
+}

@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
 import { addIcons } from 'ionicons';
+import { MenuController } from '@ionic/angular/standalone';
+
+
 import { eyeOffOutline, eyeOutline, keyOutline, lockClosed, mailOutline } from 'ionicons/icons';import {
   IonApp,
   IonRouterOutlet,
-  IonHeader,
-  IonToolbar,
   IonButtons,
-  IonMenuButton,
+  IonIcon,
+  IonHeader,
+  IonContent,
+  IonToolbar,
   IonTitle,
+  IonMenuButton
 } from '@ionic/angular/standalone';
 import { SideMenuComponent } from './components/sidemenu/sidemenu.component';
 
@@ -15,23 +20,33 @@ import { SideMenuComponent } from './components/sidemenu/sidemenu.component';
   selector: 'app-root',
   templateUrl: 'app.component.html',
   imports: [ IonRouterOutlet,
+    IonContent,
+    IonTitle,
+    IonMenuButton,
+    IonToolbar,
+    IonHeader,
     SideMenuComponent,
     IonApp,
     IonRouterOutlet,
-    IonHeader,
-    IonToolbar,
+  
     IonButtons,
-    IonMenuButton,
-    IonTitle,],
+  IonIcon],
 })
 export class AppComponent {
-  constructor() {
+
+  isMenuOpen = false;
+
+  constructor(private menu: MenuController) {
     addIcons({
       mailOutline,
       keyOutline,
       eyeOutline,
       eyeOffOutline,
       lockClosed
-    })
+    });
+  }
+
+    openMenu() {
+      this.menu.open();
   }
 }

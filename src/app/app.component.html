@@ -1,18 +1,22 @@
 <ion-app>
-  <!-- Side menu como componente -->
+  <!-- Menú lateral -->
   <app-side-menu></app-side-menu>
 
-  <div class="ion-page" id="main-content"></div>
-  
+  <!-- Contenedor principal -->
+  <div class="ion-page" id="main-content">
+    <!-- Header global -->
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">
           <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>Mi App</ion-title>
+        <ion-title></ion-title>
       </ion-toolbar>
     </ion-header>
 
-    
-  <ion-router-outlet></ion-router-outlet>
+    <!-- Aquí se cargan las páginas -->
+    <ion-content>
+      <ion-router-outlet></ion-router-outlet>
+    </ion-content>
+  </div>
 </ion-app>

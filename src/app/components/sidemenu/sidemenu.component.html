@@ -1,4 +1,4 @@
-<ion-menu contentId="main-content" side="start">
+<ion-menu contentId="main-content" type="overlay">
   <ion-header>
     <ion-toolbar>
       <ion-title>Menú</ion-title>
@@ -7,15 +7,31 @@
 
   <ion-content>
     <ion-list>
-      <ion-item *ngIf="!isLoggedIn" routerLink="/login">
-        <ion-label>Login</ion-label>
-      </ion-item>
-      <ion-item *ngIf="!isLoggedIn" routerLink="/register">
-        <ion-label>Registrarse</ion-label>
-      </ion-item>
-      <ion-item *ngIf="isLoggedIn" (click)="logout()">
-        <ion-label>Cerrar sesión</ion-label>
-      </ion-item>
+
+      <!-- Si no hay usuario -->
+      <ng-container *ngIf="!user; else loggedIn">
+        <ion-menu-toggle auto-hide="false">
+          <ion-item lines="none" (click)="goToLogin()">
+            <ion-label>Iniciar Sesión</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide="false">
+          <ion-item lines="none" (click)="goToRegister()">
+            <ion-label>Registrarse</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ng-container>
+
+      <!-- Si hay usuario -->
+      <ng-template #loggedIn>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item lines="none" (click)="logout()">
+            <ion-label>Cerrar Sesión</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ng-template>
+
     </ion-list>
   </ion-content>
 </ion-menu>
