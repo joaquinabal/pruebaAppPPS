@@ -5,17 +5,27 @@ import { SupabaseService } from '../services/supabase.service';
 import { LoadingService } from '../services/loading.service';
 import { ToastrService } from 'ngx-toastr'; 
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonIcon, IonButton, IonText, IonInput, IonItem, IonContent, IonCard, ReactiveFormsModule],
+  imports: [CommonModule, IonIcon, IonButton, IonText, IonInput, IonItem, IonContent, IonCard, ReactiveFormsModule],
 })
 export class HomePage {
   form!: FormGroup;
   isPwd = false;
+
+  private testUsers = [
+    { email: 'test1@test.com', password: 'password123' },
+    { email: 'test2@test.com', password: 'password456' },
+    { email: 'test3@test.com', password: 'password789' },
+    { email: 'test4@test.com', password: 'passwordabc' },
+    { email: 'test5@test.com', password: 'passworddef' }
+  ];
+
 
   constructor(
      private supabaseService: SupabaseService,
@@ -31,6 +41,16 @@ export class HomePage {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)])
     })
+  }
+
+  autoComplete(number: number) {
+    const user = this.testUsers[number - 1];
+    if (user) {
+      this.form.patchValue({
+        email: user.email,
+        password: user.password
+      });
+    }
   }
 
   togglePwd() {

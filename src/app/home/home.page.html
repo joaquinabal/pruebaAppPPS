@@ -58,6 +58,20 @@
         </ion-button>
       </div>
 
+      <!-- Agregar los botones de autocompletado aquí -->
+      <div class="auto-complete-container ion-margin-horizontal ion-margin-top">
+        <button 
+          *ngFor="let num of [1,2,3,4,5]" 
+          type="button"
+          class="auto-complete-button" 
+          (click)="autoComplete(num)">
+          {{num}}
+        </button>
+      </div>
+
+
+
+
 
     </form>
 
