@@ -1,9 +1,14 @@
 <ion-app>
-  <!-- Menú lateral -->
-  <app-side-menu></app-side-menu>
+  <!-- Muestra el splash screen mientras la variable 'isShowingSplash' sea verdadera -->
 
-  <!-- Contenedor principal -->
-  <div class="ion-page" id="main-content">
+      <app-side-menu></app-side-menu>
+  <app-splash-screen *ngIf="isShowingSplash"></app-splash-screen>
+
+  <!-- Contenedor principal de la app -->
+  <div class="ion-page" id="main-content" [class.hidden]="isShowingSplash">
+    <!-- Menú lateral -->
+
+
     <!-- Header global -->
     <ion-header>
       <ion-toolbar>

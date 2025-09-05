@@ -9,7 +9,7 @@
     <ion-list>
 
       <!-- Si no hay usuario -->
-      <ng-container *ngIf="!user; else loggedIn">
+      
         <ion-menu-toggle auto-hide="false">
           <ion-item lines="none" (click)="goToLogin()">
             <ion-label>Iniciar Sesión</ion-label>
@@ -21,7 +21,7 @@
             <ion-label>Registrarse</ion-label>
           </ion-item>
         </ion-menu-toggle>
-      </ng-container>
+  
 
       <!-- Si hay usuario -->
       <ng-template #loggedIn>
