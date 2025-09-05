@@ -9,7 +9,7 @@
     <ion-list>
 
       <!-- Si no hay usuario -->
-      
+      @if(!user){
         <ion-menu-toggle auto-hide="false">
           <ion-item lines="none" (click)="goToLogin()">
             <ion-label>Iniciar Sesión</ion-label>
@@ -22,15 +22,17 @@
           </ion-item>
         </ion-menu-toggle>
   
-
-      <!-- Si hay usuario -->
-      <ng-template #loggedIn>
+      } @else {
         <ion-menu-toggle auto-hide="false">
           <ion-item lines="none" (click)="logout()">
             <ion-label>Cerrar Sesión</ion-label>
           </ion-item>
         </ion-menu-toggle>
-      </ng-template>
+      }
+
+
+      <!-- Si hay usuario -->
+
 
     </ion-list>
   </ion-content>

@@ -6,11 +6,6 @@ export const routes: Routes = [
     loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
   },
   {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full',
-  },
-  {
     path: 'register',
     loadComponent: () => import('./register/register.page').then( m => m.RegisterPage)
   },
@@ -18,6 +13,11 @@ export const routes: Routes = [
     path: 'home',
     loadComponent: () => import('./bienvenido/bienvenido.page').then( m => m.BienvenidoPage)
   },
+  {
+    path: 'slpash',
+    loadComponent: () => import('./slpash/slpash.page').then( m => m.SlpashPage)
+  },
+
 
 
 

@@ -19,11 +19,9 @@ export class HomePage {
   isPwd = false;
 
   private testUsers = [
-    { email: 'test1@test.com', password: 'password123' },
-    { email: 'test2@test.com', password: 'password456' },
-    { email: 'test3@test.com', password: 'password789' },
-    { email: 'test4@test.com', password: 'passwordabc' },
-    { email: 'test5@test.com', password: 'passworddef' }
+    { email: 'admin@admin.com.ar', password: 'admin1234' },
+    { email: 'user1@mail.com', password: 'useruser' },
+    { email: 'moderator@admin.com.ar', password: 'moderator1' },
   ];
 
 

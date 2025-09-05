@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { addIcons } from 'ionicons';
 import { MenuController } from '@ionic/angular/standalone';
-import { SplashScreen } from '@capacitor/splash-screen';
 import { Router } from '@angular/router';
   
 import { eyeOffOutline, eyeOutline, keyOutline, lockClosed, mailOutline } from 'ionicons/icons';import {
@@ -13,10 +12,10 @@ import { eyeOffOutline, eyeOutline, keyOutline, lockClosed, mailOutline } from '
   IonContent,
   IonToolbar,
   IonTitle,
-  IonMenuButton
+  IonMenuButton,
+
 } from '@ionic/angular/standalone';
 import { SideMenuComponent } from './components/sidemenu/sidemenu.component';
-import { SplashScreenComponent } from './splash/splash.component';
 import { Platform } from '@ionic/angular';
 
 
@@ -32,7 +31,6 @@ import { Platform } from '@ionic/angular';
     SideMenuComponent,
     IonApp,
     IonRouterOutlet,
-    SplashScreenComponent,
     IonButtons,
   IonIcon],
 })
@@ -49,19 +47,30 @@ export class AppComponent {
       eyeOffOutline,
       lockClosed
     });
-      this.showSplash();
+
+    this.initializeApp();
+     // this.showSplash();
   }
+
+  initializeApp(){
+   this.platform.ready().then(()=> {
+    this.router.navigateByUrl('slpash')
+   }
+  
+  )
+  }
+
 
 
     openMenu() {
       this.menu.open();
   } 
 
-    async showSplash(){
+/*   async showSplash(){
       await SplashScreen.show({
         autoHide: true,
         showDuration: 2000
       })
-    }
+    }*/
 
 }
